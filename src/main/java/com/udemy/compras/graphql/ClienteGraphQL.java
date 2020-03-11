@@ -6,8 +6,6 @@ import javax.transaction.Transactional;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
-import com.udemy.compras.Cliente;
-import com.udemy.compras.ClienteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,21 +14,23 @@ import org.springframework.stereotype.Component;
 public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationResolver {
 
 	@Autowired
-	private ClienteRepository clienteRepository;
+	private ClienteService clienteService;
 
 	public Cliente cliente(Integer id) {
-		return clienteRepository.findById(id).orElse(null);
+		return clienteService.findById(id);
 	}
 
 	public List<Cliente> clientes() {
-		return clienteRepository.findAll();
+		return clienteService.findAll();
 	}
 
 	@Transactional
 	public Cliente saveCliente(Cliente cliente) {
-		// Cliente novoCliente = new Cliente(cliente.getId(), cliente.getNome(),
-		// cliente.getEmail());
-		Cliente obj = clienteRepository.save(cliente);
-		return obj;
+		return clienteService.save(cliente);
+		// return obj;
+	}
+
+	public Boolean deleteCliente(Integer id) {
+		return clienteService.deleteById(id);
 	}
 }

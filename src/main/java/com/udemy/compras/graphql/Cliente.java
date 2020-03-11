@@ -1,4 +1,4 @@
-package com.udemy.compras;
+package com.udemy.compras.graphql;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
