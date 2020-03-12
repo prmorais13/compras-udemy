@@ -1,4 +1,4 @@
-package com.udemy.compras.graphql;
+package com.udemy.compras.controllers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 

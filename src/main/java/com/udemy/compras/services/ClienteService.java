@@ -1,8 +1,11 @@
-package com.udemy.compras.graphql;
+package com.udemy.compras.services;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
+
+import com.udemy.compras.models.Cliente;
+import com.udemy.compras.repositories.ClienteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

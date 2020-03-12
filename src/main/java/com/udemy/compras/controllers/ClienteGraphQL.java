@@ -1,4 +1,4 @@
-package com.udemy.compras.graphql;
+package com.udemy.compras.controllers;
 
 import java.util.List;
 
@@ -6,6 +6,8 @@ import javax.transaction.Transactional;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.udemy.compras.models.Cliente;
+import com.udemy.compras.services.ClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,6 +32,7 @@ public class ClienteGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
 		// return obj;
 	}
 
+	@Transactional
 	public Boolean deleteCliente(Integer id) {
 		return clienteService.deleteById(id);
 	}
