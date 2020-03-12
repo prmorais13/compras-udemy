@@ -7,8 +7,10 @@ import javax.transaction.Transactional;
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.udemy.compras.models.Produto;
+import com.udemy.compras.models.ProdutoInput;
 import com.udemy.compras.services.ProdutoService;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +29,8 @@ public class ProdutoGraphQL implements GraphQLQueryResolver, GraphQLMutationReso
 	}
 
 	@Transactional
-	public Produto saveProduto(Produto produto) {
-		return produtoService.save(produto);
+	public Produto saveProduto(ProdutoInput input) {
+		return produtoService.save(new ModelMapper().map(input, Produto.class));
 		// return obj;
 	}
 
