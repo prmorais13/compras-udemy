@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.udemy.compras.models.Cliente;
 import com.udemy.compras.models.Compra;
 import com.udemy.compras.repositories.CompraRepository;
 
@@ -11,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-
 public class CompraService {
 
 	@Autowired
@@ -38,6 +38,10 @@ public class CompraService {
 			return true;
 		}
 		return false;
+	}
+
+	public List<Compra> findAllByCliente(Cliente c) {
+		return repository.findAllByCliente(c);
 	}
 
 }
